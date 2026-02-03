@@ -15,18 +15,18 @@ This version adds serverless API routes and one-click deployment on Vercel.
 
 ## 🤔 ¿How does this work?
 
-### Opción 1: Auto-despliegue (RECOMENDADA)
-Cada usuario despliega su **propia instancia** en su cuenta de Vercel:
-1. Haz fork de este repositorio
-2. Deploy en Vercel con un clic
-3. Usa **tus propias** Serverless Functions
-4. **Sin límites compartidos**, tu control total
+### Option 1: Auto-deployment (RECOMENDED)
+Each user deploys their **own instance** in their Vercel account:
+1. Fork this repository
+2. Deploy to Vercel with one click
+3. Use **your own** Serverless Functions
+4. **without shared limits**, your total control
 
-### Opción 2: Usar endpoint público (LIMITADO)
-Puedes usar: `https://tu-api.vercel.app/api/stats?user=USUARIO`
-⚠️ **Rate limits aplican** - Para uso personal mejor auto-desplegar
+### Option 2: Use public endpoint (LIMITED)
+You can use: `https://tu-api.vercel.app/api/stats?user=USUARIO`
+⚠️ **Rate limits apply** - For personal use, auto-expand is recommended
 
-## 🚀 Despliegue en 2 minutos
+## 🚀 Desployment in 2 minuts
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=TU_URL)
 
 ## 📈 Change history
@@ -41,11 +41,11 @@ Consult [CHANGELOG.md](CHANGELOG.md) to see all the modifications specific to th
 
 ## 🛣️ Roadmap
 
-- [ ] Implementar endpoint `/api/streak`
-- [ ] Añadir soporte para parámetros (`user`, `theme`, etc.)
-- [ ] Generar SVG real
-- [ ] Añadir tests
-- [ ] Documentación avanzada
+- [ ] Implement endpoint `/api/streak`
+- [ ] Add support for parameters (`user`, `theme`, etc.)
+- [ ] Generate real SVG
+- [ ] Add tests
+- [ ] advanced documentation
 
 --- 
 
