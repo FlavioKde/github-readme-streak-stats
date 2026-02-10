@@ -26,26 +26,26 @@ This document is intended for both myself (the fork's author) and anyone who wan
 
 graph TD
     A[/api/]->B[hello.js]
-    A-> C[streak/]
-    C-> D[stats.js]
+    A--> C[streak/]
+    C--> D[stats.js]
 
-    E[/lib/]->F[render/]
+    E[/lib/]-->F[render/]
     F --> G[renderStreakSvg.js]
-    F-> H[renderJson.js]
+    F --> H[renderJson.js]
 
-    E-> I[streak/]
-    I-> J[calculateStreak.js]
-    I-> K[formatStreakResponse.js]
+    E --> I[streak/]
+    I --> J[calculateStreak.js]
+    I --> K[formatStreakResponse.js]
 
-    E-> L[gitHub/]
-    L-> M[githubClient.js]
-    L-> N[githubQueries.js]
+    E --> L[gitHub/]
+    L --> M[githubClient.js]
+    L --> N[githubQueries.js]
 
-    E-> O[shared/]
-    O-> P[errors.js]
-    O-> Q[validators.js]
+    E --> O[shared/]
+    O --> P[errors.js]
+    O --> Q[validators.js]
 
-    R[/docs/] -> S[vercel-guide.md]
+    R[/docs/] --> S[vercel-guide.md]
     R --> U[architecture.md]
 
 ```
@@ -97,14 +97,14 @@ Finally, the endpoint returns the corresponding HTTP response in the chosen form
 flowchart TD
 
 A[HTTP request] --> B[api/streak/stats.js]
-B--> C[lib/shared/validators (validation)]
-B--> D[githubClient → GitHub]
-B--> E[calculateStreak (domain)]
-B--> F[presentation layer]
-F--> G[renderStreakSvg]
-G--> H[HTTP response (SVG)]
-F--> I[formatJsonResponse]
-I--> J[HTTP response (json)]
+B --> C[lib/shared/validators (validation)]
+B --> D[githubClient → GitHub]
+B --> E[calculateStreak (domain)]
+B --> F[presentation layer]
+F --> G[renderStreakSvg]
+G --> H[HTTP response (SVG)]
+F --> I[formatJsonResponse]
+I --> J[HTTP response (json)]
 
 ```
 
