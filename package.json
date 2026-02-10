@@ -11,14 +11,17 @@
     "deploy": "vercel --prod",
     "format": "prettier --write .",
     "php:demo": "php -S localhost:8000 -t public",
-    "clean": "rmdir /s node_modules && del package-lock.json"
+    "clean": "rmdir /s node_modules && del package-lock.json",
+    "test": "vitest",
+    "test:run": "vitest run"
   },
   "dependencies": {
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "@prettier/plugin-php": "^0.24.0",
-    "prettier": "^3.8.1"
+    "prettier": "^3.8.1",
+    "vitest": "^4.0.18"
   },
   "keywords": [
     "github",
