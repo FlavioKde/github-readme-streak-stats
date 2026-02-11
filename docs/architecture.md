@@ -25,28 +25,28 @@ This document is intended for both myself (the fork's author) and anyone who wan
 ```mermaid
 
 graph TD
-    A[/api/]->B[hello.js]
-    A --> C[streak/]
-    C --> D[stats.js]
+    A["/api/"]->B["hello.js"]
+    A --> C["streak/"]
+    C --> D["stats.js"]
 
-    E[/lib/] --> F[render/]
-    F --> G[renderStreakSvg.js]
-    F --> H[renderJson.js]
+    E["/lib/"] --> F["render/"]
+    F --> G["renderStreakSvg.js"]
+    F --> H["renderJson.js"]
 
-    E --> I[streak/]
-    I --> J[calculateStreak.js]
-    I --> K[formatStreakResponse.js]
+    E --> I["streak/"]
+    I --> J["calculateStreak.js"]
+    I --> K["formatStreakResponse.js"]
 
-    E --> L[gitHub/]
-    L --> M[githubClient.js]
-    L --> N[githubQueries.js]
+    E --> L["gitHub/"]
+    L --> M["githubClient.js"]
+    L --> N["githubQueries.js"]
 
-    E --> O[shared/]
-    O --> P[errors.js]
-    O --> Q[validators.js]
+    E --> O["shared/"]
+    O --> P["errors.js"]
+    O --> Q["validators.js"]
 
-    R[/docs/] --> S[vercel-guide.md]
-    R --> U[architecture.md]
+    R["/docs/"] --> S["vercel-guide.md"]
+    R --> U["architecture.md"]
 
 ```
 
