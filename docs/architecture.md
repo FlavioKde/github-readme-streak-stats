@@ -25,7 +25,7 @@ This document is intended for both myself (the fork's author) and anyone who wan
 ```mermaid
 
 graph TD
-    A["/api/"]->B["hello.js"]
+    A["/api/"] -->B["hello.js"]
     A --> C["streak/"]
     C --> D["stats.js"]
 
@@ -96,15 +96,15 @@ Finally, the endpoint returns the corresponding HTTP response in the chosen form
 
 flowchart TD
 
-A[HTTP request] --> B[api/streak/stats.js]
-B --> C[lib/shared/validators (validation)]
-B --> D[githubClient → GitHub]
-B --> E[calculateStreak (domain)]
-B --> F[presentation layer]
-F --> G[renderStreakSvg]
-G --> H[HTTP response (SVG)]
-F --> I[formatJsonResponse]
-I --> J[HTTP response (json)]
+A["HTTP request"] --> B["api/streak/stats.js"]
+B --> C["lib/shared/validators (validation)"]
+B --> D["githubClient → GitHub"]
+B --> E["calculateStreak (domain)"]
+B --> F["presentation layer"]
+F --> G["renderStreakSvg"]
+G --> H["HTTP response (SVG)"]
+F --> I["formatJsonResponse"]
+I --> J["HTTP response (json)"]
 
 ```
 
