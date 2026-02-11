@@ -26,10 +26,10 @@ This document is intended for both myself (the fork's author) and anyone who wan
 
 graph TD
     A[/api/]->B[hello.js]
-    A--> C[streak/]
-    C--> D[stats.js]
+    A --> C[streak/]
+    C --> D[stats.js]
 
-    E[/lib/]-->F[render/]
+    E[/lib/] --> F[render/]
     F --> G[renderStreakSvg.js]
     F --> H[renderJson.js]
 
