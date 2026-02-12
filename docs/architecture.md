@@ -182,17 +182,35 @@ Es una sección viva: no describe el presente, sino el futuro del proyecto.
 
 # Technical decisions
 
+
+## por qué usás SVG en vez de PNG
+
+- Escalable sin pérdida de calidad
+- Tamaño de archivo mínimo (1-2KB vs 20-30KB)
+- Estilizable con CSS (modo oscuro, etc.)
+
+## por qué usás GitHub API REST o GraphQL
+
+- Menos requests (una consulta = todos los años)
+- Menos sobrecarga de datos
+- Límites de rate más generosos
+
+## por qué no usás frameworks pesados
+
+- Cold starts más rápidos en Vercel
+- Menor superficie de ataque (seguridad)
+- Dependencias mínimas (0 vulnerabilidades)
+
 Incluye:
 - por qué elegiste Vercel
 - por qué usás arquitectura limpia
 - por qué separaste dominio / infraestructura / presentación
-- por qué usás SVG en vez de PNG
-- por qué usás GitHub API REST o GraphQL
+- cualquier decisión que afecte al diseño del proyecto
 - por qué elegiste esa estructura de carpetas
 - por qué evitás lógica en los endpoints
-- por qué no usás frameworks pesados
-- cualquier decisión que afecte al diseño del proyecto
+
 La clave es justificar cada decisión con:
+
 - simplicidad
 - mantenibilidad
 - rendimiento
