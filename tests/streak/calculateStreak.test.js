@@ -52,4 +52,21 @@ describe("StreakCalculator", () => {
             });
         });
 
-    })
+        it("calculates streak when current streak is zero", () => {
+            const contributions = [
+                { date: "2024-01-01", contributionCount: 1 },
+                { date: "2024-01-02", contributionCount: 1 },
+                { date: "2024-01-03", contributionCount: 3 },
+                { date: "2024-01-04", contributionCount: 2 },
+                { date: "2024-01-05", contributionCount: 0 },
+            ];
+            const result = calculateStreak(contributions);  
+            expect(result).toEqual({
+                currentStreak: 0,
+                longestStreak: 4,
+                totalContributions: 7,
+                firstContributionDate: "2024-01-01",
+                lastContributionDate: "2024-01-04"
+            });
+        });
+});
