@@ -22,9 +22,9 @@ describe("StreakCalculator", () => {
                 length: 5
             },
             currentStreak: {
-                start: "2024-01-03",
+                start: "2024-01-01",
                 end: "2024-01-05",
-                length: 3
+                length: 5
             }
         });
 
