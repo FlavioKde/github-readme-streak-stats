@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Fixed
 ### Removed
 
+## [0.2.0] - 2026-02-18
+### Added
+- JS implementation of calculateStreak (domain layer)
+- GitHub GraphQL client (infrastructure layer)
+- `/api/streak/stats` serverless endpoint
+- githubMapper.js to transform GitHub response
+- Class `BaseError.js`, `GithubApiError.js`, `ValidationError.js` in shared/errors and `index.js`
+
+## [0.1.0] - 2026-02-05
+### Added
+- Created `architecture.md`
+- Applied clean architecture principles
+- Restructured project folders
+
 ## [0.0.2] - 2026-02-02
 ### Added
 - Basic Vercel API structure with endpoints
@@ -40,4 +54,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 *This CHANGELOG documents only the modifications to the fork.
-For original features, please refear to the documentation base project.*
+For original features, please refer to the original project documentation.*
