@@ -52,6 +52,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - ./CHANGELOG.md changes documentation
 - docs/vercel-guide.md deployment in Vercel
 
+## Version Links
+
+[0.2.0]: https://github.com/FlavioKde/github-readme-streak-stats/compare/0.1.0...0.2.0
+[0.1.0]: https://github.com/FlavioKde/github-readme-streak-stats/compare/0.0.2...0.1.0
+[0.0.2]: https://github.com/FlavioKde/github-readme-streak-stats/compare/0.0.1...0.0.2
+[0.0.1]: https://github.com/FlavioKde/github-readme-streak-stats/releases/tag/0.0.1
+
+
 ---
 *This CHANGELOG documents only the modifications to the fork.
 For original features, please refer to the original project documentation.*
