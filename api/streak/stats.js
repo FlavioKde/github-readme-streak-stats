@@ -1,5 +1,5 @@
-import { fetchUserContributions } from '../../lib/github/githubClient';
-import { calculateStreak } from '../../lib/streak/calculateStreak';
+import { fetchUserContributions } from '../../lib/github/githubClient.js';
+import { calculateStreak } from '../../lib/streak/calculateStreak.js';
 import { NotFoundError, ValidationError, ConfigurationError  } from "../../lib/shared/errors/index.js";
 
 export default async function handler(req, res) {
