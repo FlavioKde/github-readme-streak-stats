@@ -1,8 +1,18 @@
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+
+
+
+
+
 import { fetchUserContributions } from '../../lib/github/githubClient.js';
 import { calculateStreak } from '../../lib/streak/calculateStreak.js';
 import { NotFoundError, ValidationError, ConfigurationError  } from "../../lib/shared/errors/index.js";
 
 export default async function handler(req, res) {
+
+  console.log("🔥 Ejecutando /api/streak/stats");
   try {
     const { user } = req.query;
 
