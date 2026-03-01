@@ -23,6 +23,12 @@ export default async function handler(req, res) {
       });
     }
     const contributions = await fetchUserContributions({username: user});
+
+
+    console.log('Type:', typeof contributions);
+console.log('IsArray:', Array.isArray(contributions));
+console.log('Keys:', Object.keys(contributions));
+console.log('Sample:', JSON.stringify(contributions).slice(0, 200));
     
     const stats = calculateStreak(contributions);
     
