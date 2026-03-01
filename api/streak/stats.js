@@ -1,18 +1,8 @@
-export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
-
-
-
-
-
-
 import { fetchUserContributions } from '../../lib/github/githubClient.js';
 import { calculateStreak } from '../../lib/streak/calculateStreak.js';
 import { NotFoundError, ValidationError, ConfigurationError  } from "../../lib/shared/errors/index.js";
 
 export default async function handler(req, res) {
-
-  console.log("🔥 Ejecutando /api/streak/stats");
   try {
     const { user } = req.query;
 
@@ -23,16 +13,6 @@ export default async function handler(req, res) {
       });
     }
     const contributions = await fetchUserContributions({username: user});
-
-
-    console.log('Type:', typeof contributions);
-console.log('IsArray:', Array.isArray(contributions));
-console.log('Keys:', Object.keys(contributions));
-console.log('Sample:', JSON.stringify(contributions).slice(0, 200));
-    
-   // const stats = calculateStreak(contributions);
-    
-   // res.status(200).json(stats);
 
    res.status(200).json(contributions);
     
