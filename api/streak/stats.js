@@ -30,9 +30,11 @@ console.log('IsArray:', Array.isArray(contributions));
 console.log('Keys:', Object.keys(contributions));
 console.log('Sample:', JSON.stringify(contributions).slice(0, 200));
     
-    const stats = calculateStreak(contributions);
+   // const stats = calculateStreak(contributions);
     
-    res.status(200).json(stats);
+   // res.status(200).json(stats);
+
+   res.status(200).json(contributions);
     
   } catch (error) {
     console.error('Stats endpoint error:', error);
