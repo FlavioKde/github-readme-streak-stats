@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Fixed
 ### Removed
 
+## [0.3.0] - 2026-03-02
+### Added
+- Multi-year contribution support
+- Block-based yearly fetching
+- Error classification (404, 400, 500)
+- Custom error classes
+- Robust GitHub GraphQL integration
+
+### Fixed
+- Correct handling of GitHub NOT_FOUND errors
+
+### Changed
+- Refactored GitHub client for multi-range support
+
 ## [0.2.0] - 2026-02-18
 ### Added
 - JS implementation of calculateStreak (domain layer)
@@ -54,6 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## Version Links
 
+[0.3.0]:
 [0.2.0]: https://github.com/FlavioKde/github-readme-streak-stats/compare/0.1.0...0.2.0
 [0.1.0]: https://github.com/FlavioKde/github-readme-streak-stats/compare/0.0.2...0.1.0
 [0.0.2]: https://github.com/FlavioKde/github-readme-streak-stats/compare/0.0.1...0.0.2
