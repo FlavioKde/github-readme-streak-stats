@@ -1,5 +1,6 @@
 import { fetchUserContributions } from '../../lib/github/githubClient.js';
 import { NotFoundError, ValidationError, ConfigurationError  } from "../../lib/shared/errors/index.js";
+import { formatJsonResponse } from '../../lib/render/formatJsonResponse.js';
 
 export default async function handler(req, res) {
   try {
@@ -13,7 +14,9 @@ export default async function handler(req, res) {
     }
     const contributions = await fetchUserContributions({username: user});
 
-   res.status(200).json(contributions);
+    const streakData = formatJsonResponse(contributions);
+
+   res.status(200).json(streakData);
     
   } catch (error) {
     console.error('Stats endpoint error:', error);
@@ -43,5 +46,7 @@ export default async function handler(req, res) {
       error: 'Internal server error',
       message: error.message
     });
-  }     
+  }  
+
+  
 }
