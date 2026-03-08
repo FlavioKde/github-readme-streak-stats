@@ -1,16 +1,21 @@
 import { fetchUserContributions } from '../../lib/github/githubClient.js';
-import { NotFoundError, ValidationError, ConfigurationError  } from "../../lib/shared/errors/index.js";
+//import { NotFoundError, ValidationError, ConfigurationError  } from "../../lib/shared/errors/index.js";
+import { ValidationError } from '../../lib/shared/errors/index.js';
 import { formatJsonResponse } from '../../lib/render/formatJsonResponse.js';
+import { handleJsonError } from '../../lib/http/handleJsonError.js';
 
 export default async function handler(req, res) {
   try {
     const { user } = req.query;
 
     if (!user) {
+      /*
       return res.status(400).json({
         error: 'Bad Request',
         message: 'Missing required query parameter: user'
       });
+      */
+      throw new ValidationError("Missing required query parameter: user");
     }
     const contributions = await fetchUserContributions({username: user});
 
@@ -19,8 +24,9 @@ export default async function handler(req, res) {
    res.status(200).json(streakData);
     
   } catch (error) {
-    console.error('Stats endpoint error:', error);
-
+   // console.error('Stats endpoint error:', error);
+    handleJsonError(res, error);
+/*
     if (error instanceof NotFoundError) {
       return res.status(404).json({
         error: 'Not Found',
@@ -46,6 +52,7 @@ export default async function handler(req, res) {
       error: 'Internal server error',
       message: error.message
     });
+    */
   }  
 
   
