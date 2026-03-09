@@ -5,7 +5,7 @@ import { renderStreakSvg } from '../../lib/render/renderStreakSvg.js';
 //import { errorSvg } from '../../lib/render/error_svg.js';
 import { sendSvgResponse } from '../../lib/render/sendSvgResponse.js'; 
 import { handleSvgError } from '../../lib/http/handleSvgError.js';
-
+import { getCachedContributions } from '../../lib/cache/contributionsCache.js';
 
 export default async function handler(req, res) {
 
@@ -24,7 +24,8 @@ export default async function handler(req, res) {
       //  return;
     }
 
-    const contributions = await fetchUserContributions({username: user});
+    //const contributions = await getCachedContributions (fetchUserContributions({username: user}));
+    const contributions = await getCachedContributions(fetchUserContributions, user);
 
     const streakData = renderStreakSvg(contributions);
 
