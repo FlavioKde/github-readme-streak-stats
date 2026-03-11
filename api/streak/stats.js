@@ -1,5 +1,4 @@
 import { fetchUserContributions } from '../../lib/github/githubClient.js';
-//import { NotFoundError, ValidationError, ConfigurationError  } from "../../lib/shared/errors/index.js";
 import { ValidationError } from '../../lib/shared/errors/index.js';
 import { formatJsonResponse } from '../../lib/render/formatJsonResponse.js';
 import { handleJsonError } from '../../lib/http/handleJsonError.js';
@@ -10,51 +9,20 @@ export default async function handler(req, res) {
     const { user } = req.query;
 
     if (!user) {
-      /*
-      return res.status(400).json({
-        error: 'Bad Request',
-        message: 'Missing required query parameter: user'
-      });
-      */
+      
       throw new ValidationError("Missing required query parameter: user");
     }
-    //const contributions = await getCachedContributions (fetchUserContributions({username: user}));
+   
     const contributions = await getCachedContributions(fetchUserContributions, user);
     const streakData = formatJsonResponse(contributions);
 
-   res.setHeader('Cache-Control', 'public, max-age=43200');
+   res.setHeader('Cache-Control', 'public, max-age=43200, s-maxage=43200, stale-while-revalidate=3600');
    res.status(200).json(streakData);
     
   } catch (error) {
-   // console.error('Stats endpoint error:', error);
+   
     handleJsonError(res, error);
-/*
-    if (error instanceof NotFoundError) {
-      return res.status(404).json({
-        error: 'Not Found',
-        message: error.message
-      });
-    }
 
-    if (error instanceof ValidationError) {
-      return res.status(400).json({
-        error: 'Bad Request',
-        message: error.message
-      });
-    }
-
-     if (error instanceof ConfigurationError) {
-      return res.status(500).json({
-        error: 'Configuration Error',
-        message: error.message
-      });
-    }
-    
-    return res.status(500).json({
-      error: 'Internal server error',
-      message: error.message
-    });
-    */
   }  
 
   
