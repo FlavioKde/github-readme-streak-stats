@@ -36,8 +36,71 @@ Consult [CHANGELOG.md](CHANGELOG.md) to see all the modifications specific to th
 ## 📋 Documentation
 
 - **[CHANGELOG.md](CHANGELOG.md)** - Change history of this fork
-- **[Documentación original](docs/)** - Features and use of the base project 
-- [Guía de despliegue en Vercel](docs/vercel-guide.md)
+- **[Original doc](docs/)** - Features and use of the base project 
+- **[Doc to Vercel deploy](docs/vercel-guide.md)** -(docs/vercel-guide.md)
+- **[architecture](docs/architecture.md)** -(docs/architecture.md)
+
+## 🎨 Themes Preview
+
+```bash
+
+?user=FlavioKde&theme=NAME_OF_THEME
+
+```
+
+🌑 Dark
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=dark&v=1
+
+🌕 Light
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=light&v=1
+
+🧛 Dracula
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=dracula&v=1
+
+❄️ Nord
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=nord&v=1
+
+🎌 Tokyo Night
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=tokyo&v=1
+
+🌙 Solarized Dark
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=solarized_dark&v=1
+
+🌅 Solarized Light
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=solarized_light&v=1
+
+🎨 Monokai
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=monokai&v=1
+
+🟫 Gruvbox Dark
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=gruvbox_dark&v=1
+
+🟨 Gruvbox Light
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=gruvbox_light&v=1
+
+🐱 Catppuccin Latte
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=catppuccin_latte&v=1
+
+🐱 Catppuccin Frappe
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=catppuccin_frappe&v=1
+
+🐱 Catppuccin Macchiato
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=catppuccin_macchiato&v=1
+
+🐱 Catppuccin Mocha
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=catppuccin_mocha&v=1
+
+🔵 One Dark Pro
+https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=one_dark_pro&v=1
+
+## Important Note
+
+- The parameter &v=1 is to break the cache when you update the design.
+- If you change something, raise it to &v=2, &v=3, etc.
+
+
+
+
 
 ## 🛣️ Roadmap
 
