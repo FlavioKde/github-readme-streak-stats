@@ -7,9 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 ### Added
-### Changed
+### Changed 
 ### Fixed
 ### Removed
+
+## [0.4.0] - 2026-03-14
+### Added
+- Dynamic SVG error badges and unified SVG response system
+- New theme rendering file and improved theme logic
+
+### Changed
+- Moved buildYearBlocks into the streak domain (domain‑specific computation)
+- Improved error-handling pattern in stats module
+
+### Refactored
+- Separated GitHub logic into modules (queries, validators, response handlers)
+- Replaced manual JSON responses with exceptions in stats module
+
 
 ## [0.3.0] - 2026-03-02
 ### Added
