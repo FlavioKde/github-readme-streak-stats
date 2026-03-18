@@ -7,8 +7,6 @@ import { getCachedContributions } from '../../lib/cache/contributionsCache.js';
 import { getTheme } from '../../lib/themes/themes.js';
 
 export default async function handler(req, res) {
-
-  const theme = cathTheme(req.query.theme);
      
   try {
     const { user, theme = "dark" } = req.query; 
@@ -32,7 +30,7 @@ export default async function handler(req, res) {
   } catch (error) {
 
 
-    handleSvgError(res, error, theme);
+    handleSvgError(res, error);
       
   }
 
