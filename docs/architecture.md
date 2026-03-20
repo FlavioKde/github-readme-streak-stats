@@ -16,6 +16,7 @@ Its purpose is to:
 - Document the technical decisions made to adapt the original project to Vercel Serverless Functions.
 
 This document is intended for both myself (the fork's author) and anyone who wants to:
+
 - understand how the project works internally,
 - contribute changes,
 - or deploy and extend their own instance on Vercel.
@@ -28,25 +29,50 @@ graph TD
     A["/api/"] -->B["hello.js"]
     A --> C["streak/"]
     C --> D["stats.js"]
+    C --> E["svg.js"]
 
-    E["/lib/"] --> F["render/"]
-    F --> G["renderStreakSvg.js"]
-    F --> H["renderJson.js"]
+    F["/lib/"] --> G["cache/"]
+    G --> H["contributionsCache.js"]
 
-    E --> I["streak/"]
-    I --> J["calculateStreak.js"]
-    I --> K["formatStreakResponse.js"]
+    F --> I["gitHub/"]
+    I --> J["githubClient.js"]
+    I --> K["githubMapper.js"]
+    I --> L["githubQueries.js"]
+    I --> M["githubResponse.js"]
 
-    E --> L["gitHub/"]
-    L --> M["githubClient.js"]
-    L --> N["githubQueries.js"]
+    F --> N["http/"]
+    N --> O["handleJsonError.js"]
+    N --> P["handleSvgError.js"]
 
-    E --> O["shared/"]
-    O --> P["errors.js"]
-    O --> Q["validators.js"]
+    F --> Q["render/"]
+    Q --> R["error_svg.js"]
+    Q --> S["formatJsonResponse.js"]
+    Q --> T["renderStreakSvg.js"]
+    Q --> U["sendSvgResopnse.js"]
 
-    R["/docs/"] --> S["vercel-guide.md"]
-    R --> U["architecture.md"]
+    F --> v["shared/"]
+    v --> W["errors/"]
+    W --> X["BaseError.js"]
+    W --> Y["ConfigurationError.js"]
+    W --> Z["GitHubApiError.js"]
+    W --> AA["index.js"]
+    W --> AB["NotFoundError.js"]
+    W --> AC["ValidationError.js"]
+    v --> AD["validators.js"]
+
+    F --> AE["streak/"]
+    AE --> AF["buildYearBlocks.js"]
+    AE --> AG["calculateStreak.js"]
+
+    F --> AH["themes/"]
+    AH --> AI["errorTheme.js"]
+    AH --> AJ["themes.js"]
+    
+    AK["/docs/"] --> AL["vercel-guide.md"]
+    AK --> AM["architecture.md"]
+
+    AN["/test_js/"] --> AO["streak/"]
+    AO --> AP["architecture.md"]
 
 ```
 
@@ -58,10 +84,10 @@ The chosen architecture responds to specific project needs and limitations inher
 Endpoints in `/api` must be lean because Vercel executes each file as an independent function. Keeping them free of heavy logic prevents duplication, simplifies maintenance, and reduces the risk of errors when adding more routes.
 
 ### Logic Independence from the Environment
-The streak logic, SVG rendering, and GitHub queries reside in `/lib` so they don't depend on Vercel. This allows them to be tested without a serverless environment and avoids coupling with the platform.
+The streak logic, SVG and Json rendering, GitHub, cache and errors reside in `/lib` so they don't depend on Vercel. This allows them to be tested without a serverless environment and avoids coupling with the platform.
 
 ### Modularity and Scalability
-Dividing `/lib` into submodules (`github`, `streak`, `render`, `shared`) allows each part to evolve without affecting the others. If a new endpoint or output format is added tomorrow, the architecture is already prepared.
+Dividing `/lib` into submodules (`cache`,`github`, `http`,`streak`, `render`, `shared/errors`, `themes`) allows each part to evolve without affecting the others. If a new endpoint or output format is added tomorrow, the architecture is already prepared.
 
 ### Component Reuse Functions 
 Such as validators, error handling, and streak calculations are used at various points in the project. Having them in separate modules avoids duplication and maintains code consistency.
@@ -70,8 +96,8 @@ Such as validators, error handling, and streak calculations are used at various 
 The structure reflects Clean Architecture principles applied to a serverless environment:
 
 - **Domain**: pure streak logic
-- **Infrastructure**: GitHub queries
-- **Presentation**: SVG rendering
+- **Infrastructure**: GitHub 
+- **Presentation**: SVG and Json rendering
 - **Interface**: endpoints in `/api`
 
 This separation allows each layer to change without breaking the others.
@@ -110,39 +136,47 @@ I --> J["HTTP response (json)"]
 
 # Testing
 
-El proyecto parte de un fork, así que no se construye desde cero. Ya existe una base funcional y no tiene sentido aplicar TDD de forma estricta. La estrategia es incremental: cada vez que se añade o modifica una parte importante del sistema, se incorporan tests que garanticen su correcto funcionamiento.
-El objetivo no es la cobertura total, sino asegurar que las piezas críticas del proyecto sean fiables, fáciles de entender y compatibles con futuras extensiones.
+The project originated from a fork, so it wasn't built from scratch. A functional foundation already exists, and strictly applying TDD doesn't make sense. The strategy is incremental: each time a significant part of the system is added or modified, tests are incorporated to ensure its correct operation.
+The goal isn't complete coverage, but rather ensuring that the project's critical components are reliable, easy to understand, and compatible with future extensions.
 
-## Principios/reglas que se aplican
+## Principles/rules that apply
 
-- El código nuevo relevante se testea.
-- La capa de dominio es prioritaria porque contiene la lógica central.
-- Los tests deben ayudar a que el proyecto sea entendible para cualquier colaborador.
-- Se prioriza compatibilidad y mantenibilidad por encima del dogmatismo.
+- Relevant new code is tested.
 
-## Qué testear y qué NO 
+- The domain layer is prioritized because it contains the core logic.
 
-### Testear
+- Tests should help make the project understandable to any contributor.
 
-- calculateStreak (núcleo del proyecto)
-- validators (entrada del usuario)
-- renderStreakSvg (salida visual)
-- formato del JSON (salida alternativa)
+- Compatibility and maintainability are prioritized over dogmatism.
 
-### No testear
+## What to test and what NOT to test 
 
-- Runtime de Vercel
-- Objetos req / res
+### Test
+
+- `calculateStreak`  (project core)
+- `validators` (user entry)
+- `renderStreakSvg` (visual output)
+- `formatJsonResponse` (alternative output)
+- `buildYearBlocksFromDate` (build moduls years)
+- `githubResponse`(handle errors)
+
+
+### No testing
+
+- Runtime of Vercel
+- Objects req / res
 - Wiring HTTP
-- Deploy o infraestructura
-Estas partes dependen del entorno serverless y no aportan valor al test unitario.
+- Deploy or infrastructure
 
-## Herramientas de testing
+These parts depend on the serverless environment and do not add value to the unit test.
 
-Se utiliza Vitest porque:
-- es nativo para proyectos modernos en Node
-- requiere muy poca configuración
-- es rápido de ejecutar e integrar
+## Testing tools
+
+Vitest is used because:
+
+- It's natively compatible with modern Node projects
+- It requires very little configuration
+- It's fast to run and integrate
 
 ## SETUP Vitest
 
@@ -152,7 +186,7 @@ npm install -D vitest
 
 ```
 
-Agregar en el package.json
+Add to package.json
 
 ```json
 
@@ -183,19 +217,19 @@ Es una sección viva: no describe el presente, sino el futuro del proyecto.
 # Technical decisions
 
 
-## por qué usás SVG en vez de PNG
+## Why do i use SVG instead of PNG?
 
-- Escalable sin pérdida de calidad
-- Tamaño de archivo mínimo (1-2KB vs 20-30KB)
-- Estilizable con CSS (modo oscuro, etc.)
+- Scalable without loss of quality
+- Minimal file size (1-2KB vs. 20-30KB)
+- Styleable with CSS (dark mode, etc.)
 
-## por qué usás GitHub API REST o GraphQL
+## why do i use GitHub API REST o GraphQL?
 
 - Menos requests (una consulta = todos los años)
 - Menos sobrecarga de datos
 - Límites de rate más generosos
 
-## por qué no usás frameworks pesados
+## Why don't use heavyweight frameworks?
 
 - Cold starts más rápidos en Vercel
 - Menor superficie de ataque (seguridad)
