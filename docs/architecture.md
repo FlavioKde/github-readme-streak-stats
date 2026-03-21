@@ -23,60 +23,6 @@ This document is intended for:
 
 # Project structure
 
-```mermaid
-
-graph TD
-    A["/api/"] -->B["hello.js"]
-    A --> C["streak/"]
-    C --> D["stats.js"]
-    C --> E["svg.js"]
-
-    F["/lib/"] --> G["cache/"]
-    G --> H["contributionsCache.js"]
-
-    F --> I["gitHub/"]
-    I --> J["githubClient.js"]
-    I --> K["githubMapper.js"]
-    I --> L["githubQueries.js"]
-    I --> M["githubResponse.js"]
-
-    F --> N["http/"]
-    N --> O["handleJsonError.js"]
-    N --> P["handleSvgError.js"]
-
-    F --> Q["render/"]
-    Q --> R["error_svg.js"]
-    Q --> S["formatJsonResponse.js"]
-    Q --> T["renderStreakSvg.js"]
-    Q --> U["sendSvgResopnse.js"]
-
-    F --> v["shared/"]
-    v --> W["errors/"]
-    W --> X["BaseError.js"]
-    W --> Y["ConfigurationError.js"]
-    W --> Z["GitHubApiError.js"]
-    W --> AA["index.js"]
-    W --> AB["NotFoundError.js"]
-    W --> AC["ValidationError.js"]
-    v --> AD["validators.js"]
-
-    F --> AE["streak/"]
-    AE --> AF["buildYearBlocks.js"]
-    AE --> AG["calculateStreak.js"]
-
-    F --> AH["themes/"]
-    AH --> AI["errorTheme.js"]
-    AH --> AJ["themes.js"]
-    
-    AK["/docs/"] --> AL["vercel-guide.md"]
-    AK --> AM["architecture.md"]
-
-    AN["/test_js/"] --> AO["streak/"]
-    AO --> AP["architecture.md"]
-
-```
-
-
 
 ```mermaid
 
