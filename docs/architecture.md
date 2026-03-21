@@ -82,58 +82,58 @@ graph TD
 
 graph TD
 
-    subgraph API Layer [/api/]
+    subgraph API Layer ["/api/"]
         A1["streak/stats.js"]
         A2["streak/svg.js"]
     end
 
-    subgraph Core Logic [/lib/]
+    subgraph Core Logic ["/lib/"]
         
-        subgraph GitHub Integration [github/]
+        subgraph GitHub Integration ["github/"]
             G1["githubClient.js"]
             G2["githubQueries.js"]
             G3["githubMapper.js"]
             G4["githubResponse.js"]
         end
 
-        subgraph Streak Domain [streak/]
+        subgraph Streak Domain ["streak/"]
             S1["calculateStreak.js"]
             S2["buildYearBlocks.js"]
         end
 
-        subgraph Rendering [render/]
+        subgraph Rendering ["render/"]
             R1["renderStreakSvg.js"]
             R2["errorSvg.js"]
             R3["formatJsonResponse.js"]
             R4["sendSvgResponse.js"]
         end
 
-        subgraph HTTP Utilities [http/]
+        subgraph HTTP Utilities ["http/"]
             H1["handleJsonError.js"]
             H2["handleSvgError.js"]
         end
 
-        subgraph Cache Layer [cache/]
+        subgraph Cache Layer ["cache/"]
             C1["contributionsCache.js"]
         end
 
-        subgraph Shared Utilities [shared/]
+        subgraph Shared Utilities ["shared/"]
             E1["validators.js"]
             E2["errors/"]
         end
 
-        subgraph Themes [themes/]
+        subgraph Themes ["themes/"]
             T1["themes.js"]
             T2["errorTheme.js"]
         end
     end
 
-    subgraph Documentation [/docs/]
+    subgraph Documentation ["/docs/"]
         D1["architecture.md"]
         D2["vercel-guide.md"]
     end
 
-    subgraph Tests [/test_js/]
+    subgraph Tests ["/test_js/"]
         TST1["streak/*.test.js"]
     end
 
@@ -305,23 +305,6 @@ At a high level, the system processes a request in the following stages:
 
 
 # Diagram
-
-```mermaid
-
-flowchart TD
-
-A["HTTP request"] --> B["api/streak/stats.js"]
-B --> C["lib/shared/validators (validation)"]
-B --> D["githubClient → GitHub"]
-B --> E["calculateStreak (domain)"]
-B --> F["presentation layer"]
-F --> G["renderStreakSvg"]
-G --> H["HTTP response (SVG)"]
-F --> I["formatJsonResponse"]
-I --> J["HTTP response (json)"]
-
-```
-
 
 ```mermaid
 
