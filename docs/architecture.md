@@ -687,6 +687,54 @@ Benefits:
 - easier debugging
 - easier testing
 
+## Why a dedicated errorTheme?
 
+Error rendering must be:
+- stable
+- predictable
+- independent of user themes
+If a user theme is invalid, the error SVG must still render correctly.
+A dedicated errorTheme ensures:
+- no broken SVGs
+- no missing colors
+- no Vercel fallback errors
+- consistent visual identity
+Future versions will allow users to override this behavior.
 
+## Why isolate rendering logic in /lib/render?
+
+Rendering SVG and JSON is a presentation concern, not domain logic.
+Keeping it isolated:
+- avoids mixing logic
+- makes rendering testable
+- allows adding new formats (PNG, HTML, etc.)
+- keeps endpoints clean
+
+## Why avoid heavy frameworks?
+
+The project intentionally avoids:
+- Express
+- Fastify
+- NestJS
+- Next.js API routes
+Reasons:
+- serverless functions don’t need them
+- faster cold starts
+- fewer dependencies
+- smaller attack surface
+- easier maintenance
+The project uses pure Node.js for maximum simplicity.
+
+## Why modular GitHub integration?
+
+The GitHub integration is split into:
+- githubClient
+- githubQueries
+- githubMapper
+- githubResponse
+This separation allows:
+- mocking GitHub easily
+- swapping GraphQL/REST if needed
+- adding new metrics without touching the core
+- better testability
 
