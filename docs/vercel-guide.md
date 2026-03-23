@@ -32,8 +32,6 @@ No GitHub token is required.
 No database is required.
 No configuration is required.
 
-OJO CON ESTO esto lo tengo que revisar, ya que si que necesita su github token
-
 ## Methode 1: Deploy with one click (RECOMENDED)
 
 Click the button below:
@@ -118,6 +116,24 @@ Use this if you want:
  (optional)
 Useful only for local testing.
 If these variables are not set, the project will still work normally.
+
+## 🔐 GitHub Token (Optional but recommended)
+
+This project works without a GitHub token using public GraphQL queries.
+
+However, providing a token is recommended for:
+
+- higher rate limits
+- better reliability
+- avoiding anonymous request throttling
+
+To configure it:
+
+```bash
+
+GITHUB_TOKEN=your_token_here
+
+```
 
 ## 🧯 Troubleshooting
 
