@@ -106,14 +106,17 @@ Everything works out of the box.
 ## ⚙️ Optional: Environment Variables (Advanced Users)
 
 This project works without any environment variables.
+
 All GitHub contribution data is fetched using public GraphQL queries, so no authentication is required.
 However, advanced users may optionally configure:
  (optional)
+
 Use this if you want:
-• 	higher GitHub rate limits
-• 	more stable development
-• 	to bypass GitHub’s anonymous request throttling
+-	higher GitHub rate limits
+- 	more stable development
+-	to bypass GitHub’s anonymous request throttling
  (optional)
+
 Useful only for local testing.
 If these variables are not set, the project will still work normally.
 
