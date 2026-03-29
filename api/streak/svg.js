@@ -29,7 +29,8 @@ export default async function handler(req, res) {
         sendSvgResponse({
             res,
             status: 200,
-            svgString: streakData
+            //svgString: streakData
+            svgString: svg
         });
 
   } catch (error) {
