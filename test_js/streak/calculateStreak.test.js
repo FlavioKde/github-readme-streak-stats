@@ -106,4 +106,16 @@ describe("StreakCalculator", () => {
                 
             });
         });
+        it("should handle unordered contributions", () => {
+            const contributions = [
+                { date: "2024-01-03", count: 3 },
+                { date: "2024-01-01", count: 1 },
+                { date: "2024-01-04", count: 2 },
+                { date: "2024-01-02", count: 1 },
+                { date: "2024-01-05", count: 1 },
+            ];
+            const result = calculateStreak(contributions);
+
+            expect(result.currentStreak.length).toBe(5);
+        });
 });

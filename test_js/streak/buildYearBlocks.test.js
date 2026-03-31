@@ -71,7 +71,7 @@ it("should handle year boundaries correctly", () => {
 
     const result = buildYearBlocksFromDate(from, to);
     
-    expect(result).have.length(2);
+    expect(result).toHaveLength(2);
 }
 );
 });

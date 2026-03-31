@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { handleGitHubApiResponse, handleMissingUserData, handleMissingUserData } from "../../lib/github/githubResponse.js";
+import { handleGitHubApiResponse, handleMissingUserData } from "../../lib/github/githubResponse.js";
 
 
 describe("GitHub Response Handlers", () => {
