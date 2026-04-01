@@ -1,11 +1,12 @@
-import { describe, it, expect, vi } from "vitest";
-
-vi.mock("../../lib/github/githubClient.js", => () ({
-    
-}))
-
-
+import { describe, it, expect, vi, afterEach } from "vitest";
 import handler from "../../api/streak/svg.js";
+import * as githubClient from "../../lib/github/githubClient.js";
+import { NotFoundError } from "../../lib/shared/errors/NotFoundError.js";
+
+afterEach(() => {
+    vi.restoreAllMocks();
+});
+
 
 const createMockRes = () => {
     const res ={
@@ -52,9 +53,16 @@ describe("SVG Endppoint errors", () => {
             expect(res.body.toLowerCase()).toContain("bad request");
     });
 
-    it("should return error svg when incorrects dates", async () => {
+
+
+
+    it("should return error svg when user is not found", async () => {
+
+        vi.spyOn(githubClient, "fetchUserContributions")
+          .mockRejectedValueOnce(new NotFoundError("User not found"));
+
        const req = {
-              query: {user:"Not user in this PATH"},
+              query: {user:"fakeUser"},
               headers: {},
             };
         
@@ -70,8 +78,11 @@ describe("SVG Endppoint errors", () => {
 
 
     it("should return error svg when system error", async () => {
+        vi.spyOn(githubClient, "fetchUserContributions")
+          .mockRejectedValueOnce(new Error("Unexpected error"));
+
        const req = {
-              query: {user:"Not user in this PATH"},
+              query: {user:"octocat"},
               headers: {},
             };
         
@@ -82,7 +93,7 @@ describe("SVG Endppoint errors", () => {
             expect(res.statusCode).toBe(500),
             expect(res.headers["Content-Type"]).toBe("image/svg+xml");
             expect(res.body).toContain("<svg");
-            expect(res.body.toLowerCase()).toContain("configuration error"); 
+            expect(res.body.toLowerCase()).toContain("unexpected error"); 
     });
 
 });
