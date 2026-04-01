@@ -303,7 +303,11 @@ The goal isn't complete coverage, but rather ensuring that the project's critica
 
 ## What is tested 
 
-### Test
+## Test type
+
+### Unit tests
+
+Focus on isolated logic
 
 - `calculateStreak`  (project core)
 - `validators` (user entry)
@@ -311,6 +315,23 @@ The goal isn't complete coverage, but rather ensuring that the project's critica
 - `formatJsonResponse` (alternative output)
 - `buildYearBlocksFromDate` (build years blocks)
 - `githubResponse`(handle errors)
+
+### Integration tests
+
+Focus on module interaction
+
+- `handleSvgError`(handle svg errors)
+- `svgEndpoint`(full request → SVG response)
+
+### Mocking strategy
+
+External dependencies (such as GitHub API calls) are mocked in integration tests to ensure:
+
+- deterministic results
+- no dependency on external services
+- faster test execution
+
+This allows testing the full request → response flow without relying on real network calls.
 
 
 ### No testing
