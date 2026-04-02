@@ -11,6 +11,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Fixed
 ### Removed
 
+
+## [0.5.0] - 2026-04-02
+### Added
+- Comprehensive integration tests for `svgEndpoint` and `handleSvgError`
+- New integration test module for SVG endpoint and error handling
+- Additional unit test cases across core modules
+
+### Changed
+- Updated SVG rendering logic to improve error badge output
+- Improved test structure and organization
+
+### Fixed
+- Corrected SVG rendering issues by removing streakData and passing SVG directly to    `sendSvgResponse`
+- Improved error handling for 404/500 cases in tests using vi.mock
+
+### Refactored
+- Decoupled architecture layers to improve modularity
+- Refactored system error test cases and mock responses
+- General test suite cleanup and restructuring
+
+### Documentation
+- Updated architecture.md with new module structure and removed outdated graph
+- Updated Vercel deployment guide with GitHub token information
+- Updated README and architecture docs with latest changes
+
 ## [0.4.0] - 2026-03-14
 ### Added
 - Dynamic SVG error badges and unified SVG response system
